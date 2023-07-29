@@ -114,7 +114,6 @@ main {
 
 main .image {
     /* width: 100%; */
-    /*SE COLOCAR CLAMP OS BOTÕES FICAM BUGADOS KKKKK*/
     width: clamp(32rem, 100%, 80rem);
     border: none;
 }
