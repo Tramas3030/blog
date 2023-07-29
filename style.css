@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --background-color-blue: #065E7C;
+    --background-color-input: #387E96;
+    --outline-input: #1ecceb;
+    --background-color-logo: #F4FCFF;
+    --color-base-white: #FFFFFF;
+
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+html, body, input {
+    font-family: 'Mulish', sans-serif;
+    font-size: 1.6rem;
+}
+
+body {
+    background-color: var(--color-base-white);
+}
+
+#app {
+    display: grid;
+    /* talvez tenha que usar justify-items ao inves do content */
+    justify-content: center;
+    /* justify-items: center; */
+    grid-template-rows: max-content 1fr max-content max-content;
+    grid-template-areas:
+    "header"
+    "main"
+    "aside"
+    "footer";
+
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    /* talvez tenha que tirar o space-evenly e colocar como center */
+    justify-content: center;
+    gap: 2.6rem;
+}
+
+header {
+    grid-area: header;
+    
+    width: 100%;
+    padding: 1.2rem 2.8rem;
+
+    background-color: var(--background-color-blue);
+}
+
+.logo {
+    width: 4rem;
+    height: 4rem;
+    padding: .8rem;
+    border-radius: 9999px;
+
+    background-color: var(--background-color-logo);
+}
+
+header form {
+    flex: 0.8;
+}
+
+.container input  {
+    padding: 1.2rem 1.6rem;
+    width: max(20rem, 100%);
+
+    border: none;
+    border-radius: .4rem;
+
+    color: var(--color-base-white);
+    background-color: var(--background-color-input);
+}
+
+.container input::placeholder {
+    color: var(--color-base-white);
+}
+
+.container input:focus {
+    outline: 2px solid var(--outline-input);
+}
+
+.avatar {
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+}
+
+main {
+    grid-area: main;
+}
+
+main .image {
+    /* width: 100%; */
+    /*SE COLOCAR CLAMP OS BOTÕES FICAM BUGADOS KKKKK*/
+    width: clamp(32rem, 100%, 80rem);
+    border: none;
+}
+
+.title, main p, aside {
+    padding: 0 2.6rem;
+}
+
+.title {
+    margin-top: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.title h1 {
+    font-size: 2.4rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1.4rem;
+}
+
+.buttons button {
+    padding: 1.2rem;
+    border: none;
+    border-radius: 9999px;
+
+    cursor: pointer;
+    background-color: var(--background-color-blue);
+}
+
+.buttons button:hover {
+    transform: scale(1.1);
+}
+
+main p {
+    margin-top: 3.6rem;
+    width: clamp(28rem, 100%, 72rem);
+}
+
+aside {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+aside h2 {
+    margin-top: 3.2rem;
+}
+
+/* aside div.articles:first-of-type {
+    margin-top: 3.2rem;
+} */
+
+.articles {
+    display: flex;
+    gap: 1.6rem;
+}
+
+.articles-text {
+    width: 21.5rem;
+}
+
+.articles strong {
+    font-size: 1.8rem;
+}
+
+.articles p {
+    font-size: 1.4rem;
+    margin-top: 1.4rem;
+}
+
+footer {
+    grid-area: footer;
+    margin-top: 3.8rem;
+    width: 100%;
+    padding: 2.6rem 1.6rem;
+    text-align: center;
+
+    color: var(--color-base-white);
+    background-color: var(--background-color-blue);
+}
