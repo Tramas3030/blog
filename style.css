@@ -10,6 +10,7 @@
     font-size: 62.5%;
 
     --background-color-blue: #065E7C;
+    --background-color-activated: #43b5db;
     --background-color-input: #387E96;
     --outline-input: #1ecceb;
     --background-color-logo: #F4FCFF;
@@ -40,9 +41,8 @@ body {
 
 #app {
     display: grid;
-    /* talvez tenha que usar justify-items ao inves do content */
     justify-content: center;
-    /* justify-items: center; */
+    margin: 0 auto;
     grid-template-rows: max-content 1fr max-content max-content;
     grid-template-areas:
     "header"
@@ -50,6 +50,11 @@ body {
     "aside"
     "footer";
 
+    /* width: 100%; */
+    /* width: max(350px, 500px); */
+    width: clamp(32rem, 100%, 60rem);
+    /* width: 420px; */
+    /* width: max(42rem, 58rem); */
     height: 100vh;
 }
 
@@ -118,7 +123,7 @@ main .image {
     border: none;
 }
 
-.title, main p, aside {
+.title, .main-text, aside {
     padding: 0 2.6rem;
 }
 
@@ -143,6 +148,7 @@ main .image {
     border: none;
     border-radius: 9999px;
 
+    transition: transform .3s ease;
     cursor: pointer;
     background-color: var(--background-color-blue);
 }
@@ -151,9 +157,25 @@ main .image {
     transform: scale(1.1);
 }
 
+.buttons button.activated {
+    background-color: var(--background-color-activated);
+}
+
+.main-text {
+    width: 100%;
+    /* border: 1px solid green; */
+}
+
 main p {
     margin-top: 3.6rem;
-    width: clamp(28rem, 100%, 72rem);
+    /*28rem no min, 100% no meio e 72rem no max */
+    width: clamp(32rem, 100%, 60rem);
+    /* width: 100%; */
+    /* width: clamp(24rem, 100%, 60rem); */
+    /* width: min(38rem, 100%); */
+    border: 1px solid red;
+
+    font-size: 1.6rem;
 }
 
 aside {
@@ -167,13 +189,18 @@ aside h2 {
     margin-top: 3.2rem;
 }
 
-/* aside div.articles:first-of-type {
-    margin-top: 3.2rem;
-} */
-
 .articles {
     display: flex;
     gap: 1.6rem;
+}
+
+.articles a img {
+    transition: all .3s ease;
+}
+
+.articles a img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 .articles-text {
@@ -199,3 +226,13 @@ footer {
     color: var(--color-base-white);
     background-color: var(--background-color-blue);
 }
+
+/* @media (min-width: 600px) {
+    #app {
+        width: 100%;
+    }
+
+    .title, main p, aside {
+        padding: 0 1.2rem;
+    }
+} */
